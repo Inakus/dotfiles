@@ -1,4 +1,5 @@
 require("karol.lazy")
+require("karol.keymaps")
 require("mason").setup()
 require("lualine").setup()
 vim.wo.number = true
