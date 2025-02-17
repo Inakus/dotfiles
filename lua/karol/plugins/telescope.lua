@@ -40,13 +40,20 @@ return {
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
+		local function ExecCommandFromPrompt()
+			vim.ui.input({ prompt = ":" }, function(input)
+				if input and #input > 0 then
+					vim.cmd(input)
+				end
+			end)
+		end
+
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
-		keymap.set("n", ":", "<cmd>Telescope command_history<CR>", { desc = "Command history" })
 		keymap.set("n", "<leader>/", function()
 			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 			local builtin = require("telescope.builtin")
