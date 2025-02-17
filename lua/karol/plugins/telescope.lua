@@ -37,7 +37,6 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
@@ -46,6 +45,8 @@ return {
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+		keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+		keymap.set("n", ":", "<cmd>Telescope command_history<CR>", { desc = "Command history" })
 		keymap.set("n", "<leader>/", function()
 			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 			local builtin = require("telescope.builtin")
